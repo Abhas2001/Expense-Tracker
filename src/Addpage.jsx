@@ -27,7 +27,7 @@ const Addpage = (props) => {
        <p>Amount <input type="text" className='border-2 border-slate-400' onInput={handleamount} /></p>
        <p>Catagoury <input type="text" className='border-2 border-slate-400'/></p>
   <div className='w-full flex justify-center items-center'>
-       <button className='bg-slate-600 rounded-3xl' onClick={handleback}>+</button>
+       <button className='bg-slate-600 rounded-3xl' onClick={handleback}>Add</button>
        </div>
     </div>
     </div>
