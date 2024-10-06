@@ -26,7 +26,7 @@ const Home = (props) => {
   return (
     <div className= 'w-full h-full flex flex-col justify-between gap-24'>
     <div className='w-full flex flex-col justify-center items-center'>
-    <div className='w-[60%] h-[10rem] rounded-md bg-white flex justify-center items-center gap-10 shadow-lg shadow-black'>
+    <div className='w-[60%] h-[10rem] rounded-md bg-white flex justify-center items-center gap-10 shadow-lg shadow-black max-md:w-[100%]'>
       <button className='bg-[#4169e1] border-[#4169e1] border-2 text-white h-13 rounded-md p-1'>
        <p className='text-xs font-bold'>Current Balance</p>
        <p className='text-xs font-bold'>{"₹"+(props.sum - props.negatives)}</p>
@@ -44,7 +44,7 @@ const Home = (props) => {
       <button className={`${ val==1?'bg-red-500':'bg-[#4169e1]'} text-lg font-bold text-white p-3 rounded-full border-2 `} onClick={handleexpenseclick}>Expense</button>
       <button className={`${ xbtn==1?'bg-green-500':'bg-[#4169e1]'} text-lg font-bold text-white p-3 rounded-full border-2`} onClick={handleIncomeclick}>Income</button>
       </div>
-      <div className='w-[60%] bg-white flex justify-center items-center p-5 shadow-lg shadow-black rounded-md'>
+      <div className='w-[60%] bg-white flex justify-center items-center p-5 shadow-lg shadow-black rounded-md max-md:w-[100%]'>
 
       
       <div className=' h-60 bg-white flex flex-col-reverse justify-between'>

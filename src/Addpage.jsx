@@ -38,7 +38,7 @@ const Addpage = (props) => {
   return (
     <div className='w-full h-full flex flex-col gap-20 justify-center items-center'>
         <div className='w-full flex flex-col justify-center items-center'>
-    <div className='w-[50%] h-40 bg-white flex flex-col gap-2 '>
+    <div className='w-[50%] h-40 bg-white flex flex-col gap-2 max-md:w-[100%]'>
               <div className='flex '><button className={flag==true?'bg-gray-400 text-white border-2 border-gray-400  p-2':'text-gray-400 border-2 border-gray-400  p-2'} onClick={handleexpense}>expense</button> 
               <button className={ghg==false?'bg-white text-gray-400 border-2 border-gray-400 p-2':'bg-gray-400 text-white border-2 border-gray-400 p-2'} onClick={handleincome}>Income</button></div>
        <p>Amount <input type="text" className='border-2 border-slate-400' onInput={handleamount} /></p>
