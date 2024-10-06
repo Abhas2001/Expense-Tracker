@@ -17,6 +17,8 @@ const Home = (props) => {
     <div className="w-full flex justify-center items-center">
    
       <div className='w-[60%] bg-white flex justify-center items-center p-5 shadow-lg shadow-black rounded-md'>
+
+      
       <div className=' h-60 bg-white flex flex-col-reverse justify-between'>
       
         <div>{props.sum==0? 0: props.sum*0}</div>
@@ -27,11 +29,13 @@ const Home = (props) => {
  
        </div>
     <div className='w-[80%] flex  flex-col border-x-2 border-y-2 border-slate-400 pt-4 justify-center items-center '>
+      <div>
       { props.sum==0?
       <div className='w-14 h-60'></div>
-      :
+      : 
         <div className={`bg-green-600 w-14 h-60 `} ></div>
       }
+      </div>
      
     </div>
   

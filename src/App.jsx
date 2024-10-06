@@ -10,10 +10,20 @@ function App() {
 
   const[val , setval] = useState(0)
   const[income,setincome]=useState([])
+  const[xpensive,setxpensive]=useState([])
    let sum = 0;
+   let negatives = 0;
  for(let i=0;i<income.length;i++){
       sum+=JSON.parse(income[i]);
  }
+
+ for(let j=0;j<xpensive.length;j++){
+   negatives+=JSON.parse(xpensive[j]);
+ }
+
+ console.log(negatives);
+
+ console.log(xpensive);
 
   return (
     <> 
@@ -21,9 +31,9 @@ function App() {
 
    <Header/>
    { val==0?
-   <Home sum={sum} setval={setval} income={income}/>
+   <Home negatives={negatives} xpensive={xpensive} sum={sum} setval={setval} income={income}/>
    :
-   <Addpage sum={sum} setval={setval} income={income} setincome={setincome}/>
+   <Addpage xpensive={xpensive} setxpensive={setxpensive} val={val} sum={sum} setval={setval} income={income} setincome={setincome}/>
 }
    
 
