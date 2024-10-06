@@ -5,6 +5,7 @@ import './App.css'
 import Header from './Header';
 import Home from './Home';
 import Addpage from './Addpage';
+import Records from './Records';
 
 function App() {
 
@@ -21,9 +22,7 @@ function App() {
    negatives+=JSON.parse(xpensive[j]);
  }
 
- console.log(negatives);
-
- console.log(xpensive);
+ 
 
   return (
     <> 
@@ -32,8 +31,10 @@ function App() {
    <Header/>
    { val==0?
    <Home negatives={negatives} xpensive={xpensive} sum={sum} setval={setval} income={income}/>
-   :
+   : val==1?
    <Addpage xpensive={xpensive} setxpensive={setxpensive} val={val} sum={sum} setval={setval} income={income} setincome={setincome}/>
+   :
+   <Records income={income} xpensive={xpensive}/>
 }
    
 

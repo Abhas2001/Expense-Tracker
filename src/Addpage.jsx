@@ -34,7 +34,7 @@ const Addpage = (props) => {
     const handleamount = (e) => {
              setincomevalue(e.target.value);
     }
-    const cdate = new Date().toLocaleDateString();
+    
   return (
     <div className='w-full h-full flex flex-col gap-20 justify-center items-center'>
         <div className='w-full flex flex-col justify-center items-center'>
@@ -43,8 +43,8 @@ const Addpage = (props) => {
               <button className={ghg==false?'bg-white text-gray-400 border-2 border-gray-400 p-2':'bg-gray-400 text-white border-2 border-gray-400 p-2'} onClick={handleincome}>Income</button></div>
        <p>Amount <input type="text" className='border-2 border-slate-400' onInput={handleamount} /></p>
        <p>Catagoury <input type="text" className='border-2 border-slate-400'/></p>
-  <div className='w-full flex justify-center items-center'>
-       <button className='bg-slate-600 rounded-3xl' onClick={handleback}>+</button>
+  <div className='w-full flex justify-center items-center '>
+       <button className='bg-[#4169e1] text-white shadow-lg w-10 h-10 rounded-full' onClick={handleback}>+</button>
        </div>
     </div>
     </div>
@@ -52,35 +52,6 @@ const Addpage = (props) => {
 
  
  
-{ props.income.map((x)=>{return(
-    <div className='w-full flex flex-col justify-center items-center'>
-    <div className='w-[50%] h-40 bg-white flex flex-col gap-2 '>
-              <h1 className='text-3xl'>Income</h1>
-       <p className='text-green-500'>Amount {x}</p>
-       <p>Catagoury </p>
-       <p>{cdate}</p>
-  
-    </div>
-    </div>
-    )})
-}
-
-
-
-{ props.xpensive.map((x)=>{return(
-    <div className='w-full flex flex-col justify-center items-center'>
-    <div className='w-[50%] h-40 bg-white flex flex-col gap-2 '>
-              
-              <h1 className='text-3xl'>Expense</h1>
-       <p className='text-red-500'>Amount -{x}</p>
-       <p>Catagoury </p>
-       <p>{cdate}</p>
-  
-    </div>
-    </div>
-    )})
-}
-
 
     </div>
   )
