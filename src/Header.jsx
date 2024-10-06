@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-
-const Header = () => {
+import Home from './Home';
+const Header = (props) => {
      
  const navigate = useNavigate();
   const[valss,setvalss]=useState(0);
@@ -19,6 +19,8 @@ const Header = () => {
 
 
   return (
+
+    <>
     <div className='min-h-32'>
     <div className='w-full min-h-20 bg-[#1e1e1e] shadow-custom-white'>
       <h1 className="text-2xl font-bold  text-white">
@@ -30,6 +32,8 @@ const Header = () => {
     </div>
     </div>
     </div>
+  <Home  negatives={props.negatives} xpensive={props.xpensive} sum={props.sum} setval={props.setval} income={props.income}/>
+    </>
   )
 }
 

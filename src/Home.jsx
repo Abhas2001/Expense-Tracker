@@ -1,13 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
 const Home = (props) => {
-
+ 
+  const navigate = useNavigate();
   const[val,setval]=useState(0);
   const[xbtn,setxbtn]=useState(0);
 
     const handleaddpg =()=>{
-        props.setval(1)
+        navigate('/addpage')
     }
     const handleexpenseclick = () =>{
               setval(1);

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import Header from './Header';
 
 const Addpage = (props) => {
  
@@ -36,6 +37,8 @@ const Addpage = (props) => {
     }
     
   return (
+    <>
+    <Header/>
     <div className='w-full h-full flex flex-col gap-20 justify-center items-center'>
         <div className='w-full flex flex-col justify-center items-center  max-md:w-[95%]'>
     <div className='w-[50%] h-40 bg-[#2a2a2a] flex flex-col gap-2 shadow-custom-white max-md:w-[100%]'>
@@ -54,6 +57,7 @@ const Addpage = (props) => {
  
 
     </div>
+    </>
   )
 }
 

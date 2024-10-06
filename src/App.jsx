@@ -6,6 +6,7 @@ import Header from './Header';
 import Home from './Home';
 import Addpage from './Addpage';
 import Records from './Records';
+import { Route,Routes,BrowserRouter } from 'react-router-dom'
 
 function App() {
 
@@ -26,17 +27,23 @@ function App() {
 
   return (
     <> 
-   
+   <BrowserRouter>
 
-   <Header/>
-   { val==0?
+   <Routes>
+   <Route path='' element={<Header negatives={negatives} xpensive={xpensive} sum={sum} setval={setval} income={income}/>}/>
+
+   <Route path='/addpage' element={<Addpage xpensive={xpensive} setxpensive={setxpensive} val={val} sum={sum} setval={setval} income={income} setincome={setincome}/>}/>
+
+   {/* { val==0?
    <Home negatives={negatives} xpensive={xpensive} sum={sum} setval={setval} income={income}/>
    : val==1?
    <Addpage xpensive={xpensive} setxpensive={setxpensive} val={val} sum={sum} setval={setval} income={income} setincome={setincome}/>
    :
    <Records income={income} xpensive={xpensive}/>
-}
+} */}
    
+</Routes>
+</BrowserRouter>
 
     </>
   )

@@ -8,13 +8,10 @@ import './index.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-    <Routes>
-         <Route path='' element={<App/>}/>
+  
+     <App/>
        
-         <Route path='/budget' element={<Budget/>}/>
-         </Routes>
-    </BrowserRouter>
+    
     
   </StrictMode>,
 )
