@@ -9,7 +9,7 @@ const Home = (props) => {
   const[xbtn,setxbtn]=useState(0);
 
     const handleaddpg =()=>{
-        navigate('/addpage')
+        props.setopenadd(1);
     }
     const handleexpenseclick = () =>{
               setval(1);
@@ -21,7 +21,7 @@ const Home = (props) => {
     }
 
     const handleRecords = () => {
-      props.setval(2);
+      props.setopenadd(2);
     }
 
     console.log(props.val);

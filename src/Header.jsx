@@ -2,14 +2,32 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import Home from './Home';
+import Addpage from './Addpage';
+import Records from './Records';
+
 const Header = (props) => {
      
  const navigate = useNavigate();
   const[valss,setvalss]=useState(0);
+  const[openadd,setopenadd]=useState(0);
+  const[income,setincome]=useState([])
+  const[xpensive,setxpensive]=useState([])
+   let sum = 0;
+   let negatives = 0;
+ for(let i=0;i<income.length;i++){
+      sum+=JSON.parse(income[i]);
+ }
+
+ for(let j=0;j<xpensive.length;j++){
+   negatives+=JSON.parse(xpensive[j]);
+ }
+
+ console.log(sum);
 
   const handleHome = () => {
           navigate('/');
           setvalss(0);
+          setopenadd(0);
   }
 
   const handlebudget = () => {
@@ -32,8 +50,15 @@ const Header = (props) => {
     </div>
     </div>
     </div>
-  <Home  negatives={props.negatives} xpensive={props.xpensive} sum={props.sum} setval={props.setval} income={props.income}/>
-    </>
+    {openadd==0?
+  <Home setopenadd={setopenadd}  negatives={negatives} xpensive={xpensive} sum={sum} setval={props.setval} income={income}/>
+    : openadd==1?
+    <Addpage income={income} xpensive={xpensive} setopenadd={setopenadd} negatives={props.negatives} setxpensive={setxpensive} sum={sum} setval={props.setval} setincome={setincome}/>
+  :
+  <Records income={income} xpensive={xpensive}/>  
+  
+  }
+  </>
   )
 }
 

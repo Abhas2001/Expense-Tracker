@@ -11,7 +11,7 @@ const Addpage = (props) => {
   const[abdd,setabdd] = useState(0);
 
     const handleback = () =>{
-          props.setval(0);
+          props.setopenadd(0);
           abdd==0?
           props.setincome([...props.income,incomevalue])
           :
@@ -36,10 +36,10 @@ const Addpage = (props) => {
              setincomevalue(e.target.value);
     }
     
+    console.log(props.xpensive);
   return (
     <>
-    <Header/>
-    <div className='w-full h-full flex flex-col gap-20 justify-center items-center'>
+     <div className='w-full h-full flex flex-col gap-20 justify-center items-center'>
         <div className='w-full flex flex-col justify-center items-center  max-md:w-[95%]'>
     <div className='w-[50%] h-40 bg-[#2a2a2a] flex flex-col gap-2 shadow-custom-white max-md:w-[100%]'>
               <div className='flex '><button className={flag==true?'bg-gray-400 text-white border-2 border-gray-400  p-2':'text-gray-400 border-2 border-gray-400  p-2'} onClick={handleexpense}>expense</button> 
@@ -57,6 +57,7 @@ const Addpage = (props) => {
  
 
     </div>
+      
     </>
   )
 }
