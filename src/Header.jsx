@@ -4,14 +4,18 @@ import { useNavigate } from "react-router-dom";
 import Home from './Home';
 import Addpage from './Addpage';
 import Records from './Records';
+import { useEffect } from 'react';
 
 const Header = (props) => {
+
+ 
      
  const navigate = useNavigate();
   const[valss,setvalss]=useState(0);
   const[openadd,setopenadd]=useState(0);
   const[income,setincome]=useState([])
   const[xpensive,setxpensive]=useState([])
+  const[ayush,setayush]=useState([]);
    let sum = 0;
    let negatives = 0;
  for(let i=0;i<income.length;i++){
@@ -22,7 +26,12 @@ const Header = (props) => {
    negatives+=JSON.parse(xpensive[j]);
  }
 
- console.log(sum);
+ if(sum!==0){
+ localStorage.setItem("item",sum);
+ }
+useEffect(()=>{
+localStorage.setItem('final',(sum+ JSON.parse(localStorage.getItem('item'))));
+},[sum])
 
   const handleHome = () => {
           navigate('/');
@@ -32,7 +41,7 @@ const Header = (props) => {
 
   const handlebudget = () => {
     navigate('/budget');
-    setvalss(1);
+    
 }
 
 

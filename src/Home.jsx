@@ -3,6 +3,19 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
 const Home = (props) => {
+
+  let abd=(props.sum-props.negatives)
+  if(abd!==0){
+  localStorage.setItem("text",abd )
+  }
+
+  if(props.sum!==0){
+  localStorage.setItem("add",props.sum )
+  }
+
+  if(props.negatives!==0){
+  localStorage.setItem("minus",props.negatives)
+  }
  
   const navigate = useNavigate();
   const[val,setval]=useState(0);
@@ -24,14 +37,18 @@ const Home = (props) => {
       props.setopenadd(2);
     }
 
-    console.log(props.val);
+    let value = localStorage.getItem('text');
+    let add = localStorage.getItem('add');
+    let  minus=localStorage.getItem('minus');
+    console.log(value);
+  
   return (
     <div className= 'w-full h-full flex flex-col justify-between gap-24'>
     <div className='w-full flex flex-col justify-center items-center'>
     <div className='w-[60%] h-[10rem] rounded-md bg-[#1e1e1e] flex justify-center items-center gap-10 shadow-custom-white max-md:w-[93%]'>
       <button className='bg-[#4169e1] border-[#4169e1] border-2 text-white h-13 rounded-md p-1'>
        <p className='text-xs font-bold'>Current Balance</p>
-       <p className='text-xs font-bold'>{"₹"+(props.sum - props.negatives)}</p>
+       <p className='text-xs font-bold'>{"₹"+(add-minus)}</p>
        </button>
 
        <button className='bg-white border-[#4169e1] border-2 text-black h-13 rounded-md p-1 flex justify-center items-center'>
@@ -52,17 +69,17 @@ const Home = (props) => {
       <div className=' h-60 bg-[#2a2a2a] flex flex-col-reverse justify-between text-white'>
        { val==0?
        <>
-        <div>{props.sum==0? 0: props.sum*0}</div>
-        <div>{props.sum==0? 0.25:props.sum*1/4}</div>
-        <div>{props.sum==0? 0.50:props.sum*1/2}</div>
-        <div>{props.sum==0? 1.00:props.sum*1}</div>
+        <div>{add==0? 0: add*0}</div>
+        <div>{add==0? 0.25:add*1/4}</div>
+        <div>{add==0? 0.50:add*1/2}</div>
+        <div>{add==0? 1.00:add*1}</div>
         </>
         :
         <>
-        <div>{props.negatives==0? 0: props.negatives*0}</div>
-        <div>{props.negatives==0? 0.25:"-"+ props.negatives*1/4}</div>
-        <div>{props.negatives==0? 0.50: "-"+props.negatives*1/2}</div>
-        <div>{props.negatives==0? 1.00:"-"+props.negatives*1}</div>
+        <div>{minus==0? 0: props.negatives*0}</div>
+        <div>{minus==0? 0.25:"-"+ minus*1/4}</div>
+        <div>{minus==0? 0.50: "-"+minus*1/2}</div>
+        <div>{minus==0? 1.00:"-"+minus*1}</div>
         </>
 
        }
@@ -75,14 +92,14 @@ const Home = (props) => {
 
       { val==0?
       <div>
-      { props.sum==0?
+      { add==0?
       <div className='w-14 h-60'></div>
       : 
         <div className='bg-green-600 w-14 h-60'></div>
       }
       </div>
       : <div>
-      { props.negatives==0?
+      { minus==0?
       <div className='w-14 h-60'></div>
       : 
         <div className='bg-red-500 w-14 h-60' ></div>

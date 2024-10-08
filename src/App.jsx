@@ -6,6 +6,7 @@ import Header from './Header';
 import Home from './Home';
 import Addpage from './Addpage';
 import Records from './Records';
+import Budget from './Budget';
 import { Route,Routes,BrowserRouter } from 'react-router-dom'
 
 function App() {
@@ -33,7 +34,9 @@ function App() {
    <Route path='' element={<Header negatives={negatives} xpensive={xpensive} sum={sum} setval={setval} income={income}/>}/>
 
    <Route path='/addpage' element={<Addpage xpensive={xpensive} setxpensive={setxpensive} val={val} sum={sum} setval={setval} income={income} setincome={setincome}/>}/>
+    
 
+    <Route path='/budget' element={<Budget/>} />
    {/* { val==0?
    <Home negatives={negatives} xpensive={xpensive} sum={sum} setval={setval} income={income}/>
    : val==1?

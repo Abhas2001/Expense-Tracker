@@ -1,7 +1,21 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const Records = (props) => {
     const cdate = new Date().toLocaleDateString();
+    const[arr,setarr] = useState([]);
+    const[final,setfinal] = useState([]);
+    useEffect(()=>{
+      setarr([...props.income])
+    },[props.income])
+
+    console.log(arr);
+
+
+
+   
+
   return (
     <div>
       <div className='w-full'>
