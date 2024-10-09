@@ -11,7 +11,8 @@ const Budget = () => {
   const[goal,setgoal] = useState(false);
   const[addgoal,setaddgoal] = useState(false);
   const[input,setinput] = useState("");
-  const[name,setname] = useState([]);
+  const[name,setname] = useState("");
+  const[namearr,setnamearr]=useState([])
     const navigate = useNavigate();
 
 
@@ -26,10 +27,9 @@ const Budget = () => {
      }
 
       const handleinput = (e) =>{
-        setinput([...name,e.target.value])
+        setinput(e.target.value)
       }
       
-      console.log(name);
 
       const handleadd = () =>{
         if(input.length>0){
@@ -47,10 +47,15 @@ const Budget = () => {
 
       const handleaddgoal = () =>{
               setaddgoal(true);
+              setnamearr((previnput)=>[...previnput,name]);
+              setgoal(false)
       }
       const handlename = (e) =>{
               setname(e.target.value)
       }
+    
+   console.log(namearr);
+      console.log(name);
   return (
     <>
       <div className='w-full flex flex-col gap-10 justify-center items-center'>
@@ -75,7 +80,7 @@ const Budget = () => {
       </div>
         
 
-          <div className='w-[50%] h-40 bg-[#2a2a2a] p-4'>
+          <div className='w-[50%] min-h-40 bg-[#2a2a2a] p-4'>
             { addgoal==false?
             <div className='w-[60%] flex gap-5 justify-center items-center'>
               <div className='w-[80px] h-[50px]'>
@@ -86,19 +91,23 @@ const Budget = () => {
                <p className='text-gray-400 font-serif text-lg'>Set your own goal and a have a quick  <br />overview of your progress</p>
                </div>
                </div>
-             :
-               <div className='w-[60%] h-20 flex flex-col gap-5 '>
+             :  
+               <div className='w-[60%] min-h-40 flex flex-col gap-5 '>
+
+                {namearr.map((x)=>{return(
               <div>
              <p className='text-white font-bold text-xl'>Goals</p>
              <div className='w-[70%] flex justify-between text-white'>
-              <p>Name</p>
+              <p>{x}</p>
               <p>100%</p>
              </div>
              <div className='w-[300px] h-3 bg-white rounded-lg '></div>
               </div>
-          
+              )})
+            }
                </div>
-}
+             }
+
                <button className='text-blue-500 font-bold text-xl' onClick={handlegoal} >Create Goal</button>
           </div>
 
