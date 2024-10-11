@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { Goalcontext } from './Goal';
 
 const Home = (props) => {
 
@@ -40,8 +42,10 @@ const Home = (props) => {
     let value = localStorage.getItem('text');
     let add = localStorage.getItem('add');
     let  minus=localStorage.getItem('minus');
-    console.log(value);
+   
   
+    
+
   return (
     <div className= 'w-full h-full flex flex-col justify-between gap-24'>
     <div className='w-full flex flex-col justify-center items-center'>

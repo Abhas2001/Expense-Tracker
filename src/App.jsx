@@ -8,6 +8,7 @@ import Addpage from './Addpage';
 import Records from './Records';
 import Budget from './Budget';
 import { Route,Routes,BrowserRouter } from 'react-router-dom'
+import { Goalcontext } from './Goal';
 
 function App() {
 
@@ -28,25 +29,21 @@ function App() {
 
   return (
     <> 
+
+    <Goalcontext.Provider value={{sum,negatives,income,val,xpensive,setincome,setxpensive,setval}}>
    <BrowserRouter>
 
    <Routes>
    <Route path='' element={<Header negatives={negatives} xpensive={xpensive} sum={sum} setval={setval} income={income}/>}/>
 
    <Route path='/addpage' element={<Addpage xpensive={xpensive} setxpensive={setxpensive} val={val} sum={sum} setval={setval} income={income} setincome={setincome}/>}/>
-    
 
     <Route path='/budget' element={<Budget/>} />
-   {/* { val==0?
-   <Home negatives={negatives} xpensive={xpensive} sum={sum} setval={setval} income={income}/>
-   : val==1?
-   <Addpage xpensive={xpensive} setxpensive={setxpensive} val={val} sum={sum} setval={setval} income={income} setincome={setincome}/>
-   :
-   <Records income={income} xpensive={xpensive}/>
-} */}
+
    
 </Routes>
 </BrowserRouter>
+</Goalcontext.Provider>
 
     </>
   )

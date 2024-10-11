@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import Home from './Home';
 import Addpage from './Addpage';
 import Records from './Records';
 import { useEffect } from 'react';
+import { Goalcontext } from './Goal';
 
 const Header = (props) => {
 
@@ -43,6 +44,7 @@ localStorage.setItem('final',(sum+ JSON.parse(localStorage.getItem('item'))));
     navigate('/budget');
     
 }
+const {val}=useContext(Goalcontext)
 
 
   return (

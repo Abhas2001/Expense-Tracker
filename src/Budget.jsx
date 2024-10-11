@@ -1,17 +1,19 @@
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
 
 
 const Budget = () => {
      
-
+   
   const[flag,setflag] = useState(false);
   const[rinks,setrinks] = useState(false);
   const[goal,setgoal] = useState(false);
   const[addgoal,setaddgoal] = useState(false);
   const[input,setinput] = useState("");
   const[name,setname] = useState("");
+  const[targetamount,settargetamount] = useState("");
   const[namearr,setnamearr]=useState([])
     const navigate = useNavigate();
 
@@ -47,7 +49,7 @@ const Budget = () => {
 
       const handleaddgoal = () =>{
               setaddgoal(true);
-              setnamearr((previnput)=>[...previnput,name]);
+              setnamearr((previnput)=>[...previnput,{name:name,targetamount:targetamount}]);
               setgoal(false)
       }
       const handlename = (e) =>{
@@ -97,11 +99,15 @@ const Budget = () => {
                 {namearr.map((x)=>{return(
               <div>
              <p className='text-white font-bold text-xl'>Goals</p>
-             <div className='w-[70%] flex justify-between text-white'>
-              <p>{x}</p>
-              <p>100%</p>
+             <div className='max-w-[80%] flex justify-between text-white'>
+              <p>{x.name}</p>
+              <p>{x.targetamount}</p>
              </div>
+             <div className='flex gap-2 items-center'>
              <div className='w-[300px] h-3 bg-white rounded-lg '></div>
+
+             <button className='text-white font-bold'>Open</button>
+             </div>
               </div>
               )})
             }
@@ -130,7 +136,7 @@ const Budget = () => {
             <input type="text" className='bg-gray-500' onChange={handlename} />
 
              <div className='text-white'>Target Amount</div>
-            <input type="text" className='bg-gray-500' />
+            <input type="text" onChange={(e)=>{settargetamount(e.target.value)}} className='bg-gray-500' />
 
             <div className='text-white'>Saved Amount</div>
             <input type="text" className='bg-gray-500' />
