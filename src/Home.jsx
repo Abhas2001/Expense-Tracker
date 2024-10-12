@@ -52,7 +52,7 @@ const Home = (props) => {
     <div className='w-[60%] h-[10rem] rounded-md bg-[#1e1e1e] flex justify-center items-center gap-10 shadow-custom-white max-md:w-[93%]'>
       <button className='bg-[#4169e1] border-[#4169e1] border-2 text-white h-13 rounded-md p-1'>
        <p className='text-xs font-bold'>Current Balance</p>
-       <p className='text-xs font-bold'>{"₹"+(add-minus)}</p>
+       <p className='text-xs font-bold'>{"₹"+(props.sum-props.negatives)}</p>
        </button>
 
        <button className='bg-white border-[#4169e1] border-2 text-black h-13 rounded-md p-1 flex justify-center items-center'>
@@ -116,7 +116,7 @@ const Home = (props) => {
     </div>
     
     </div>
-    <div className='w-full flex justify-center items-center'>  <button className=' w-12 h-12 rounded-full bg-[#4169e1] text-white' onClick={handleaddpg}>+</button> </div>
+    <div className='w-full flex justify-center items-center'>  <button className=' flex justify-center items-center w-12 h-12 rounded-full bg-white text-black hover:-translate-y-1 hover:scale-110  duration-300' onClick={handleaddpg}><img  src="https://img.icons8.com/android/24/plus.png" alt="plus--v1"/></button> </div>
     </div>
   )
 }

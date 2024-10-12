@@ -2,10 +2,14 @@ import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
+import Goaldetails from './Goaldetails';
+
 
 
 const Budget = () => {
      
+
+ 
    
   const[flag,setflag] = useState(false);
   const[rinks,setrinks] = useState(false);
@@ -13,14 +17,18 @@ const Budget = () => {
   const[addgoal,setaddgoal] = useState(false);
   const[input,setinput] = useState("");
   const[name,setname] = useState("");
-  const[targetamount,settargetamount] = useState("");
+  const[targetamount,settargetamount] = useState(0);
+  const[savedamount,setsavedamount] = useState(0);
   const[namearr,setnamearr]=useState([])
+  const[details,setdetails] = useState(false);
+  
     const navigate = useNavigate();
+
+    let percentval=(savedamount*100)/targetamount;
 
 
     let mis=localStorage.getItem('minus');
 
-    console.log(mis);
     let x=0;
      x=(mis*100)/input;
 
@@ -47,19 +55,51 @@ const Budget = () => {
         setgoal(true);
       }
 
-      const handleaddgoal = () =>{
-              setaddgoal(true);
-              setnamearr((previnput)=>[...previnput,{name:name,targetamount:targetamount}]);
-              setgoal(false)
-      }
       const handlename = (e) =>{
               setname(e.target.value)
       }
-    
-   console.log(namearr);
-      console.log(name);
+      
+
+      
+      const handleaddgoal = () =>{
+        setaddgoal(true);
+        setnamearr((previnput)=>[...previnput,{name:name,savedamount:savedamount,target:targetamount}]);
+        setgoal(false)
+        console.log(percentval);
+}
+const goHome = () => {
+  navigate('/');
+ 
+}
+const handledetailpage = () =>{
+          setdetails(true);
+}
   return (
     <>
+
+{ details==true? 
+<div>
+
+<Goaldetails setdetails={setdetails}/>
+</div>
+:
+<div>
+<div className='min-h-32'>
+    <div className='w-full min-h-20 bg-[#1e1e1e] shadow-custom-white'>
+      <h1 className="text-2xl font-bold  text-white">
+       Personal Expense
+    </h1>
+    <div className='flex justify-center items-center gap-20'>
+      <button className={`text-white text-xl font-bold cursor-pointer hover:-translate-y-1 hover:scale-110  duration-300`} onClick={goHome} >Home</button>
+      <button className={`text-white text-xl font-bold cursor-pointer hover:-translate-y-1 hover:scale-110  duration-300 ${'border-b-2'} `} >Budgets</button>
+    </div>
+    </div>
+    </div>
+
+
+
+
+
       <div className='w-full flex flex-col gap-10 justify-center items-center'>
       
 
@@ -94,19 +134,40 @@ const Budget = () => {
                </div>
                </div>
              :  
-               <div className='w-[60%] min-h-40 flex flex-col gap-5 '>
+               <div className='w-[60%] min-h-10 flex flex-col gap-4'>
+                <p className='text-white font-bold text-3xl'>Goals
+             <p className='text-sm text-slate-400'>This is what i have saved</p>
+             </p>
 
                 {namearr.map((x)=>{return(
-              <div>
-             <p className='text-white font-bold text-xl'>Goals</p>
+              <div className='flex flex-col'>
+             
              <div className='max-w-[80%] flex justify-between text-white'>
-              <p>{x.name}</p>
-              <p>{x.targetamount}</p>
+              <p className='text-2xl font-bold text-white'>
+                {x.name}
+                <p className='text-sm text-slate-400'>{"₹"+x.savedamount}</p>
+              
+              </p>
+              <p className='text-slate-400 flex justify-end items-end'>{Number(percentval.toFixed(1))+"%"}</p>
              </div>
              <div className='flex gap-2 items-center'>
-             <div className='w-[300px] h-3 bg-white rounded-lg '></div>
+           <progress value={percentval/100} style={{width:350,borderRadius:50,background:"blue"}}>
+           <style>
+    {`
+      progress::-webkit-progress-bar {
+        background-color: lightgrey;
+        border-radius: 50px;
+      }
+      progress::-webkit-progress-value {
+        background-color: blue;
+        border-radius: 50px;
+      }
+      
+    `}
+  </style>
+</progress>
 
-             <button className='text-white font-bold'>Open</button>
+             <button className='text-white font-bold flex justify-center items-center w-8 h-8' onClick={handledetailpage}><img src="https://img.icons8.com/color/48/right-squared.png" alt="" srcset="" /></button>
              </div>
               </div>
               )})
@@ -114,7 +175,7 @@ const Budget = () => {
                </div>
              }
 
-               <button className='text-blue-500 font-bold text-xl' onClick={handlegoal} >Create Goal</button>
+               <button className='text-blue-500 font-bold text-xl pt-8' onClick={handlegoal} >Create Goal</button>
           </div>
 
 
@@ -132,17 +193,17 @@ const Budget = () => {
              
              </div>
 
-          <div className='text-white'>Name</div>
-            <input type="text" className='bg-gray-500' onChange={handlename} />
+          <div className='text-gray-400'>Name</div>
+            <input type="text" className='bg-[#2a2a2a] border-b-2 border-black text-white' onChange={handlename} />
 
              <div className='text-white'>Target Amount</div>
-            <input type="text" onChange={(e)=>{settargetamount(e.target.value)}} className='bg-gray-500' />
+            <input type="text" onChange={(e)=>{settargetamount(e.target.value)}} className='bg-[#2a2a2a] border-b-2 border-black text-white' />
 
             <div className='text-white'>Saved Amount</div>
-            <input type="text" className='bg-gray-500' />
+            <input type="text" className='bg-[#2a2a2a] border-b-2 border-black text-white' onChange={(e)=>{setsavedamount(e.target.value)}} />
 
             <div className='text-white'>Note</div>
-            <input type="text" className='bg-gray-500' />
+            <input type="text" className='bg-[#2a2a2a] border-b-2 border-black text-white' />
           </div>
           :
           null
@@ -161,6 +222,9 @@ const Budget = () => {
          
         
           </div>
+          </div>
+}
+
     </>
   )
 }

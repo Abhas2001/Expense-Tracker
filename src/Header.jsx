@@ -44,7 +44,8 @@ localStorage.setItem('final',(sum+ JSON.parse(localStorage.getItem('item'))));
     navigate('/budget');
     
 }
-const {val}=useContext(Goalcontext)
+
+
 
 
   return (
@@ -56,8 +57,8 @@ const {val}=useContext(Goalcontext)
        Personal Expense
     </h1>
     <div className='flex justify-center items-center gap-20'>
-      <button className={`text-white text-xl font-bold cursor-pointer ${valss==0?'border-b-2':null}`} onClick={handleHome}>Home</button>
-      <button className={`text-white text-xl font-bold cursor-pointer ${valss==1?'border-b-2':null} `} onClick={handlebudget}>Budgets</button>
+      <button className={`text-white text-xl font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==0?'border-b-2':null}`} onClick={handleHome}>Home</button>
+      <button className={`text-white text-xl font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==1?'border-b-2':null} `} onClick={handlebudget}>Budgets</button>
     </div>
     </div>
     </div>
