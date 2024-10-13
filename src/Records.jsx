@@ -1,16 +1,7 @@
 import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react';
 
-const Records = (props) => {
-    const cdate = new Date().toLocaleDateString();
-    const[arr,setarr] = useState([]);
-    const[final,setfinal] = useState([]);
-    useEffect(()=>{
-      setarr([...props.income])
-    },[props.income])
-
-    console.log(arr);
+const Records = () => {
+  
 
 
 
@@ -19,7 +10,7 @@ const Records = (props) => {
   return (
     <div>
       <div className='w-full'>
-{ props.income.map((x)=>{return(
+{/* { props.recordarr.map((x)=>{return(
     <div className='w-full flex flex-col justify-center items-center '>
     <div className='w-[50%] h-40 bg-[#2a2a2a] text-white flex flex-col gap-2 border-b-2 border-slate-100 shadow-custom-white max-md:w-[93%]'>
               <h1 className='text-3xl'>Income</h1>
@@ -30,11 +21,11 @@ const Records = (props) => {
     </div>
     </div>
     )})
-}
+} */}
 
+<div className='text-white'>jfkngkjfngkj</div>
 
-
-{ props.xpensive.map((x)=>{return(
+{/* { props.xpensive.map((x)=>{return(
     <div className='w-full flex flex-col justify-center items-center'>
     <div className='w-[50%] h-40 bg-[#2a2a2a] text-white flex flex-col gap-2 border-b-2 shadow-custom-white border-slate-100 max-md:w-[93%]'>
               
@@ -46,7 +37,7 @@ const Records = (props) => {
     </div>
     </div>
     )})
-}
+} */}
 </div>
     </div>
   )

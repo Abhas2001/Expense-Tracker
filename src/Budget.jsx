@@ -80,7 +80,7 @@ const handledetailpage = () =>{
 { details==true? 
 <div>
 
-<Goaldetails setdetails={setdetails}/>
+<Goaldetails  savedamount={savedamount} targetamount={targetamount} setdetails={setdetails} percentval={percentval}/>
 </div>
 :
 <div>
@@ -136,7 +136,7 @@ const handledetailpage = () =>{
              :  
                <div className='w-[60%] min-h-10 flex flex-col gap-4'>
                 <p className='text-white font-bold text-3xl'>Goals
-             <p className='text-sm text-slate-400'>This is what i have saved</p>
+             <p className='text-sm text-[#D3D3D3]'>This is what i have saved</p>
              </p>
 
                 {namearr.map((x)=>{return(
@@ -145,10 +145,10 @@ const handledetailpage = () =>{
              <div className='max-w-[80%] flex justify-between text-white'>
               <p className='text-2xl font-bold text-white'>
                 {x.name}
-                <p className='text-sm text-slate-400'>{"₹"+x.savedamount}</p>
+                <p className='text-sm text-[#D3D3D3]'>{"₹"+x.savedamount}</p>
               
               </p>
-              <p className='text-slate-400 flex justify-end items-end'>{Number(percentval.toFixed(1))+"%"}</p>
+              <p className='text-[#D3D3D3] flex justify-end items-end'>{Number(percentval.toFixed(1))+"%"}</p>
              </div>
              <div className='flex gap-2 items-center'>
            <progress value={percentval/100} style={{width:350,borderRadius:50,background:"blue"}}>
@@ -175,7 +175,7 @@ const handledetailpage = () =>{
                </div>
              }
 
-               <button className='text-blue-500 font-bold text-xl pt-8' onClick={handlegoal} >Create Goal</button>
+               <button className='text-blue-500 font-bold text-2xl pt-8' onClick={handlegoal} >Create Goal</button>
           </div>
 
 

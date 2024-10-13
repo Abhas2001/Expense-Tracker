@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { Goalcontext } from './Goal';
+import ReacentTransaction from './ReacentTransaction';
 
 const Home = (props) => {
 
@@ -116,6 +117,9 @@ const Home = (props) => {
     </div>
     
     </div>
+ 
+    <ReacentTransaction income={props.income}/>
+  
     <div className='w-full flex justify-center items-center'>  <button className=' flex justify-center items-center w-12 h-12 rounded-full bg-white text-black hover:-translate-y-1 hover:scale-110  duration-300' onClick={handleaddpg}><img  src="https://img.icons8.com/android/24/plus.png" alt="plus--v1"/></button> </div>
     </div>
   )
