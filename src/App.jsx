@@ -25,6 +25,7 @@ function App() {
    negatives+=JSON.parse(xpensive[j]);
  }
 
+ console.log(income);
  
 
   return (

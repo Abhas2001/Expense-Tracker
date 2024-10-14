@@ -14,9 +14,11 @@ const Addpage = (props) => {
           props.setopenadd(0);
           abdd==0?
           props.setincome([...props.income,incomevalue])
+          
           :
           props.setxpensive([...props.xpensive,incomevalue])
     }
+  
 
     const handleexpense = () =>{
       setflag(true)
