@@ -20,11 +20,11 @@ const Records = (props) => {
      { entireTransactions.map((x)=>{return(
     <div className='w-full flex flex-col gap-4 justify-center items-center '>
    
-    <div className='w-[90%] h-30 bg-[#2a2a2a] text-white flex justify-between gap-2 border-b-2 border-slate-100 shadow-custom-white max-md:w-[93%]'>
+    <div className={`w-[90%] h-30 ${x.type=='income'?'bg-green-400':'bg-red-400'} text-white flex justify-between gap-2 border-b-2 border-slate-100 shadow-custom-white max-md:w-[93%]`}>
              
             
              <div> <h1 className='text-3xl'>{ 'Income'}</h1>
-       <p className={x.type=='income'?'text-green-500':'text-red-500'}>Amount {x.amount}</p>
+       <p className={'text-white'}>Amount {x.amount}</p>
        </div>
        
 

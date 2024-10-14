@@ -49,7 +49,7 @@ const Addpage = (props) => {
        <p className='text-white'>Amount <input type="text" className='bg-[#2a2a2a] border-2 border-slate-400' onInput={handleamount} /></p>
        <p className='text-white'>Catagoury <input type="text" className=' bg-[#2a2a2a] border-2 border-slate-400'/></p>
   <div className='w-full flex justify-center items-center '>
-       <button className='bg-[#4169e1] text-white shadow-lg w-10 h-10 rounded-full' onClick={handleback}>+</button>
+       
        </div>
     </div>
     </div>
@@ -57,7 +57,7 @@ const Addpage = (props) => {
 
  
  
-
+    <div className='w-full flex justify-center items-center'>  <button className='fixed bottom-2 right-18 flex justify-center items-center w-12 h-12 rounded-full bg-white text-black hover:-translate-y-1 hover:scale-110  duration-300'   onClick={handleback} ><img width="35" height="50" src="https://img.icons8.com/ios-filled/50/save--v1.png" alt="save--v1"/></button> </div>
     </div>
       
     </>
