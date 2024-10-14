@@ -4,8 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { Goalcontext } from './Goal';
 import ReacentTransaction from './ReacentTransaction';
+import Records from './Records';
 
 const Home = (props) => {
+
+  const[openrec,setopenrec]=useState(false);
+  
 
   let abd=(props.sum-props.negatives)
   if(abd!==0){
@@ -48,7 +52,11 @@ const Home = (props) => {
     
 
   return (
+    openrec==true?
+    <Records income={props.income} xpensive={props.xpensive} setopenrec={setopenrec}/>
+    :
     <div className= 'w-full h-full flex flex-col justify-between gap-24'>
+      
     <div className='w-full flex flex-col justify-center items-center'>
     <div className='w-[60%] h-[10rem] rounded-md bg-[#1e1e1e] flex justify-center items-center gap-10 shadow-custom-white max-md:w-[93%]'>
       <button className='bg-[#4169e1] border-[#4169e1] border-2 text-white h-13 rounded-md p-1'>
@@ -118,7 +126,7 @@ const Home = (props) => {
     
     </div>
  
-    <ReacentTransaction income={props.income}/>
+    <ReacentTransaction income={props.income}  xpensive={props.xpensive} openrec={openrec} setopenrec={setopenrec}/>
   
     <div className='w-full flex justify-center items-center'>  <button className=' flex justify-center items-center w-12 h-12 rounded-full bg-white text-black hover:-translate-y-1 hover:scale-110  duration-300' onClick={handleaddpg}><img  src="https://img.icons8.com/android/24/plus.png" alt="plus--v1"/></button> </div>
     </div>
