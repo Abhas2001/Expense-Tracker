@@ -98,27 +98,45 @@ const handledetailpage = () =>{
 
 
 
-
+    <button className='text-white' onClick={()=>{navigate(-1)}}>back</button>
 
       <div className='w-full flex flex-col gap-10 justify-center items-center'>
       
 
       <div className='w-[50%] h-40 bg-[#2a2a2a]'>
-      <button className='text-white' onClick={()=>{navigate(-1)}}>back</button>
-      <button className='text-white' onClick={handlebudget}>create budget</button>
-      <div>
-        <input className='bg-slate-400' type="text" onInput={handleinput} />
-        <button className='text-white'  onClick={handleadd}>add</button>
-        <button  className='text-white' onClick={handleedit}>edit</button>
+      
+     <div className='flex p-2'>
+      <div className='text-lg text-white'>
 
-        {
-          rinks == true?
-          <div className='text-white'>{input}</div>
-          :
-          <div></div>
-        }
+        <div className='text-white text-3xl font-bold'>No Budget For This Month ?</div>
+
+        <div className='flex gap-5 h-14'>
+          <div>
+        <p className='text-gray-400'>
+      setting a budget for your spending for future 
+      </p>
+      
+      <p className='text-gray-400'>
+      is a crucial step for acheiving goal
+      </p>
       </div>
-      <div className='w-[250px] h-[10px] border-2 border-white rounded-full'><div style={{ width: `${(x*250)/100}px` }} className={`h-[8px]  bg-green-500`}></div></div>
+      <div>
+        <img width={80} src="https://cdn-icons-png.flaticon.com/512/781/781831.png" alt="" srcset="" />
+      </div>
+      </div>
+      </div>
+
+
+      
+     </div>
+      <div className='w-[21%] flex justify-center items-center'>
+       
+        <button className='text-black w-[190px] h-10 bg-white text-lg font-semibold rounded-lg'  onClick={handleadd}>Set Up Budget</button>
+       
+
+      
+      </div>
+
       </div>
         
 
@@ -175,7 +193,7 @@ const handledetailpage = () =>{
                </div>
              }
 
-               <button className='text-blue-500 font-bold text-2xl pt-8' onClick={handlegoal} >Create Goal</button>
+               <button className='text-black w-[190px] h-10 bg-white text-lg font-semibold rounded-lg'  onClick={handlegoal} >Create Goal</button>
           </div>
 
 
