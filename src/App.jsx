@@ -9,6 +9,7 @@ import Records from './Records';
 import Budget from './Budget';
 import { Route,Routes,BrowserRouter } from 'react-router-dom'
 import { Goalcontext } from './Goal';
+import Addbgtpage from './Addbgtpage';
 
 function App() {
 
@@ -42,6 +43,8 @@ function App() {
     <Route path='/budget' element={<Budget/>} />
 
     <Route path='records' element={<Records income={income}/>}/>
+
+    <Route path='addbgtpg' element={<Addbgtpage/>}/>
 
    
 </Routes>

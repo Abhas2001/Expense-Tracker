@@ -12,7 +12,7 @@ const Goaldetails = (props) => {
     <div>
       <div className='w-full min-h-20 bg-[#1e1e1e] flex justify-between shadow-custom-white'>
         <div className='w-[200px] min-h-[70px] flex justify-center items-center gap-2'>
-            <button onClick={()=>{props.setdetails(false)}}>
+            <button onClick={()=>{props.setdetails(0)}}>
         <img width="48" height="48" src="https://img.icons8.com/fluency/48/circled-left-2--v1.png" alt="circled-left-2--v1"/>
         </button>
       <h1 className="text-2xl font-bold  text-white">

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import Goaldetails from './Goaldetails';
+import Addbgtpage from './Addbgtpage';
 
 
 
@@ -20,7 +21,7 @@ const Budget = () => {
   const[targetamount,settargetamount] = useState(0);
   const[savedamount,setsavedamount] = useState(0);
   const[namearr,setnamearr]=useState([])
-  const[details,setdetails] = useState(false);
+  const[details,setdetails] = useState(0);
   
     const navigate = useNavigate();
 
@@ -35,7 +36,9 @@ const Budget = () => {
      const handlebudget=()=>{
            setflag(true);
      }
-
+  const handleaddbtpage = () =>{
+   setdetails(2)
+  }
       const handleinput = (e) =>{
         setinput(e.target.value)
       }
@@ -72,15 +75,20 @@ const goHome = () => {
  
 }
 const handledetailpage = () =>{
-          setdetails(true);
+          setdetails(1);
 }
   return (
     <>
 
-{ details==true? 
+{ details==1? 
 <div>
 
 <Goaldetails  savedamount={savedamount} targetamount={targetamount} setdetails={setdetails} percentval={percentval}/>
+</div>
+: details ==2?
+
+<div>
+  <Addbgtpage setdetails={setdetails}/>
 </div>
 :
 <div>
@@ -131,7 +139,7 @@ const handledetailpage = () =>{
      </div>
       <div className='w-[21%] flex justify-center items-center'>
        
-        <button className='text-black w-[190px] h-10 bg-white text-lg font-semibold rounded-lg'  onClick={handleadd}>Set Up Budget</button>
+        <button className='text-black w-[190px] h-10 bg-white text-lg font-semibold rounded-lg'  onClick={handleaddbtpage}>Set Up Budget</button>
        
 
       
