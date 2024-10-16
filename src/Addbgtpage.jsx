@@ -3,6 +3,7 @@ import { useState } from 'react'
 import calendar from '../src/assets/images/calendar.webp'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { useEffect } from 'react';
 
 const Addbgtpage = (props) => {
 
@@ -19,6 +20,33 @@ const month = ["January","February","March","April","May","June","July","August"
 
 const d = new Date();
 let name = month[d.getMonth()];
+
+const arr = [
+
+
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:1},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:2},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:3},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:4},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:5},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:6},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:7},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:8},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:9},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:10},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:11},
+  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:12}
+
+
+
+
+
+]
+const[index,setindex]=useState(0)
+const[newarr ,setnewarr] = useState([]);
+useEffect(()=>{
+setnewarr(arr.slice(index,index+3))
+},[index])
 
 
 let years = d.getFullYear();
@@ -72,6 +100,35 @@ let years = d.getFullYear();
                 <input type="number" className='w-[300px] bg-[#1e1e1e] border-[1px] p-2 border-l-0 border-gray-500 rounded-r-md' placeholder='Enter your total budget limit' />
                 
                 </div>
+                
+                </div>
+                </div>
+                </section>
+
+
+
+                <section className='w-full flex justify-center items-center text-white'>
+                <div className='bg-[#1e1e1e] w-[480px] min-h-36 rounded-lg'>
+                <div>
+                <p className='text-white font-semibold p-4'>Included Categories</p>
+                
+                 
+                 <div className='w-full flex justify-center items-center gap-3 '>
+                  <button onClick={()=>{setindex(index-3)}}>{'<'}</button>
+                  { newarr.map((x)=>{return(
+                  <div className='w-12 h-12 flex justify-center items-center bg-[#3a3a3a] rounded-full'>
+                   <img width={30} src={x.img} alt="" srcset="" />
+                  
+                   <div>
+                    <p>{x.ind}</p>
+                    </div>
+                   </div>
+                 
+                   )})
+}
+
+                 <button onClick={()=>{setindex(index+3)}}>{'>'}</button>
+                 </div>
                 
                 </div>
                 </div>
