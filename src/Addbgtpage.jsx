@@ -4,11 +4,20 @@ import calendar from '../src/assets/images/calendar.webp'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useEffect } from 'react';
+import Included from './Included';
 
 const Addbgtpage = (props) => {
 
     const[year,setyear] = useState(false);
     console.log(year);
+    const[final,setfinal] =useState([]);
+
+    console.log(final);
+    
+const[isvisible,setisvisible] = useState(false);
+
+console.log(isvisible);
+
 
     const handleyearly = () =>{
              setyear(true);
@@ -24,32 +33,36 @@ let name = month[d.getMonth()];
 const arr = [
 
 
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:1},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:2},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:3},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:4},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:5},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:6},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:7},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:8},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:9},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:10},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:11},
-  {img:"https://img.freepik.com/premium-vector/finance-house-icon-outline-vector-rent-money-building-invest_98396-54846.jpg", ind:12}
+  {img:"https://cdn-icons-png.flaticon.com/512/2550/2550282.png", ind:'Others'},
+  {img:"https://cdn-icons-png.flaticon.com/512/2819/2819194.png", ind:'Food'},
+  {img:"https://cdn-icons-png.freepik.com/512/9638/9638882.png", ind:'Shopping'},
+  {img:"https://cdn-icons-png.flaticon.com/512/5086/5086786.png", ind:'Travelling'},
+  {img:"https://w1.pngwing.com/pngs/608/471/png-transparent-games-icon-video-games-game-controllers-symbol-racing-video-game-icon-design-mobile-game-yellow.png", ind:'Entertainment'},
+  {img:"https://www.freeiconspng.com/thumbs/medicine-icon/medicine-icon-15.png", ind:'Medical'},
+  {img:"https://cdn-icons-png.flaticon.com/512/4933/4933123.png", ind:'SelfCare'},
+  {img:"https://cdn-icons-png.flaticon.com/512/4366/4366867.png", ind:'Education'},
+  {img:"https://www.nicepng.com/png/full/866-8660117_growth-investment-growth-icon-png.png", ind:'Investments'},
+  {img:"https://cdn-icons-png.freepik.com/256/3058/3058953.png?semt=ais_hybrid", ind:'Bills'},
+  {img:"https://cdn-icons-png.flaticon.com/512/2596/2596025.png", ind:'Insurance'},
+  {img:"https://icons.iconarchive.com/icons/iconarchive/gift/512/Blue-Gift-icon.png", ind:'Gifts'}
 
 
 
 
 
 ]
-const[index,setindex]=useState(0)
-const[newarr ,setnewarr] = useState([]);
-useEffect(()=>{
-setnewarr(arr.slice(index,index+3))
-},[index])
+        const[index,setindex]=useState(0)
+        const[newarr ,setnewarr] = useState([]);
+        useEffect(()=>{
+          if(index<arr.length){
+        setnewarr(arr.slice(index,index+4))
+          }
+        },[index])
 
 
 let years = d.getFullYear();
+
+console.log(final.length);
   return (
     <div>
       <div className='w-full flex justify-between p-2 min-h-20 bg-[#1e1e1e] shadow-custom-white'>
@@ -70,7 +83,11 @@ let years = d.getFullYear();
               <button className={`${year==true? 'bg-gray-400':'bg-[#1e1e1e]'} font-mono w-60 rounded-md text-white border-2 border-none p-2`} onClick={handleyearly} >Yearly</button></div>
 
 
-
+              {
+                isvisible?
+                <div><Included setfinal={setfinal} arr={arr} setisvisible={setisvisible}/></div>
+                :
+                <div className='flex flex-col gap-10'>
               <section className='w-full flex justify-center items-center text-white'>
                 <div className='bg-[#1e1e1e] w-[480px] min-h-36 rounded-lg'>
                 <div>
@@ -86,7 +103,6 @@ let years = d.getFullYear();
                 </div>
                 </div>
 
-                {window.pop}
                 </section>
 
                 <section className='w-full flex justify-center items-center text-white'>
@@ -108,31 +124,64 @@ let years = d.getFullYear();
 
 
                 <section className='w-full flex justify-center items-center text-white'>
-                <div className='bg-[#1e1e1e] w-[480px] min-h-36 rounded-lg'>
+                <div className='bg-[#1e1e1e] w-[480px] min-h-60 rounded-lg'>
                 <div>
-                <p className='text-white font-semibold p-4'>Included Categories</p>
-                
+                  <div className='w-full flex justify-between '>
+                    <div>
+                <p className='text-white font-semibold pl-4 pt-4'>Included Categories</p>
+                <p className='pl-4 pb-8 text-sm'>All Categories included in your budget</p>
+                </div>
+                  <button className='p-4' onClick={()=>setisvisible(true)}>
+                <img style={{borderRadius: '50%'}}  width={30}   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH8diz-oQPJ1iwbaZOzqNlxQUuLyYhFCszkw&s" alt="" srcset="" />
+                </button>
+                </div>
                  
-                 <div className='w-full flex justify-center items-center gap-3 '>
-                  <button onClick={()=>{setindex(index-3)}}>{'<'}</button>
-                  { newarr.map((x)=>{return(
-                  <div className='w-12 h-12 flex justify-center items-center bg-[#3a3a3a] rounded-full'>
-                   <img width={30} src={x.img} alt="" srcset="" />
+                 <div className='w-full flex justify-around items-center gap-3 '>
+                  <button onClick={()=>{index>0?setindex(index-4):null}}>{'<'}</button>
+
+                  { final.length>0?
+                  
+                    final.map((x)=>{return(
+                      <div className='w-12 h-12 flex flex-col justify-between items-center  rounded-full'>
+    
+                        <div className='object-cover'>
+                       <img style={{borderRadius: '50%'}}  width={100} src={x.img} alt="" srcset="" />
+                       </div>
+                      
+                      
+                       <div>
+                        <p>{x.ind}</p>
+                        </div>
+                       </div>
+                         
+                       )})
+                  :
+               newarr.map((x)=>{return(
+                  <div className='w-12 h-12 flex flex-col justify-between items-center  rounded-full'>
+
+                    <div className='object-cover'>
+                   <img style={{borderRadius: '50%'}}  width={100} src={x.img} alt="" srcset="" />
+                   </div>
+                  
                   
                    <div>
                     <p>{x.ind}</p>
                     </div>
                    </div>
-                 
+                     
                    )})
+
+                  
 }
 
-                 <button onClick={()=>{setindex(index+3)}}>{'>'}</button>
+                 <button onClick={()=>{setindex(index+4)}}>{'>'}</button>
                  </div>
                 
                 </div>
                 </div>
                 </section>
+                </div>
+}
 
                 
               </div>
