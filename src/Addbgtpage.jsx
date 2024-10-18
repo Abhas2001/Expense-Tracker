@@ -150,7 +150,7 @@ console.log(final.length);
                       
                       
                        <div>
-                        <p>{x.ind}</p>
+                        <p>{x}</p>
                         </div>
                        </div>
                          
