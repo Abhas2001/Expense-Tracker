@@ -100,6 +100,8 @@ const handledetailpage = () =>{
     <div className='flex justify-center items-center gap-20'>
       <button className={`text-white text-xl font-bold cursor-pointer hover:-translate-y-1 hover:scale-110  duration-300`} onClick={goHome} >Home</button>
       <button className={`text-white text-xl font-bold cursor-pointer hover:-translate-y-1 hover:scale-110  duration-300 ${'border-b-2'} `} >Budgets</button>
+      <button className={`text-white text-xl font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 `}>Analysis</button>
+      <button className={`text-white text-xl font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 `} >Bank</button>
     </div>
     </div>
     </div>

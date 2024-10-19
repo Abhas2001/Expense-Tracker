@@ -15,7 +15,7 @@ const Included = (props) => {
             setflag(true);
     }
   return (
-    <div className='w-full flex flex-col justify-center gap-6 items-center text-white'>
+    <div className='w-full flex flex-col justify-center gap-6 items-center text-white transition-all duration-10000 ease-in'>
    
         <div className=' w-[25%] flex justify-between'>
 
@@ -33,7 +33,7 @@ const Included = (props) => {
             return(
 
                
-                <div onClick={()=>setarrc((prev)=>[...prev,x.ind])} className=' bg-[#1e1e1e] w-[480px] min-h-16 rounded-lg'>
+                <div onClick={()=>setarrc((prev)=>[...prev,{'name':x.ind,'img':x.img}])} className=' bg-[#1e1e1e] w-[480px] min-h-16 rounded-lg'>
 
                 <div className='w-full h-[60px] flex'>
                    <div className='w-[600vh] h-[60px] flex gap-3 justify-center items-center'>
@@ -47,7 +47,7 @@ const Included = (props) => {
                    
                   <div className='w-full h-[100%] flex justify-center items-center'>
                     <div className='w-full h-5 rounded-full' onClick={()=>setval(true)}>
-                 { arrc.includes(x.ind)?
+                 {arrc.length>0&&arrc.some((element)=>{return element.name===x.ind})?
 
                   <div className='w-4 h-4 rounded-full border-2 border-white'> <img className='w-3 h-3' src="https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620784_ycBC9Ii1Sc4e86V78Hv5ByRRI1IaCuF1.jpg" alt="" srcset="" /></div>
                   :

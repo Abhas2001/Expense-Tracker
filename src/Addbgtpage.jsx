@@ -62,7 +62,7 @@ const arr = [
 
 let years = d.getFullYear();
 
-console.log(final.length);
+
   return (
     <div>
       <div className='w-full flex justify-between p-2 min-h-20 bg-[#1e1e1e] shadow-custom-white'>
@@ -85,7 +85,7 @@ console.log(final.length);
 
               {
                 isvisible?
-                <div><Included setfinal={setfinal} arr={arr} setisvisible={setisvisible}/></div>
+                <div className='transition-all duration-10000 ease-in'><Included setfinal={setfinal} arr={arr} setisvisible={setisvisible}/></div>
                 :
                 <div className='flex flex-col gap-10'>
               <section className='w-full flex justify-center items-center text-white'>
@@ -129,7 +129,7 @@ console.log(final.length);
                   <div className='w-full flex justify-between '>
                     <div>
                 <p className='text-white font-semibold pl-4 pt-4'>Included Categories</p>
-                <p className='pl-4 pb-8 text-sm'>All Categories included in your budget</p>
+                <p className='pl-4 pb-8 text-sm'>{final.length>0? final.length:'All'} Categories included in your budget</p>
                 </div>
                   <button className='p-4' onClick={()=>setisvisible(true)}>
                 <img style={{borderRadius: '50%'}}  width={30}   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH8diz-oQPJ1iwbaZOzqNlxQUuLyYhFCszkw&s" alt="" srcset="" />
@@ -142,16 +142,18 @@ console.log(final.length);
                   { final.length>0?
                   
                     final.map((x)=>{return(
-                      <div className='w-12 h-12 flex flex-col justify-between items-center  rounded-full'>
-    
+                      <div className='w-4 h-12 flex  rounded-full'>
+                           
                         <div className='object-cover'>
-                       <img style={{borderRadius: '50%'}}  width={100} src={x.img} alt="" srcset="" />
+                       <img style={{borderRadius: '50%'}}  width={40} src={x.img} alt="" srcset="" />
+
+                       <div>
+                      <p>{x.name}</p>
+                        </div>
                        </div>
                       
                       
-                       <div>
-                        <p>{x}</p>
-                        </div>
+                      
                        </div>
                          
                        )})
@@ -165,7 +167,9 @@ console.log(final.length);
                   
                   
                    <div>
+
                     <p>{x.ind}</p>
+                   
                     </div>
                    </div>
                      
