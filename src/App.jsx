@@ -11,6 +11,7 @@ import { Route,Routes,BrowserRouter } from 'react-router-dom'
 import { Goalcontext } from './Goal';
 import Addbgtpage from './Addbgtpage';
 
+
 function App() {
 
   const[val , setval] = useState(0)
@@ -22,6 +23,7 @@ function App() {
       sum+=JSON.parse(income[i]);
  }
 
+ localStorage.setItem('sum',JSON.parse(sum));
  for(let j=0;j<xpensive.length;j++){
    negatives+=JSON.parse(xpensive[j]);
  }
@@ -40,7 +42,7 @@ function App() {
 
    <Route path='/addpage' element={<Addpage xpensive={xpensive} setxpensive={setxpensive} val={val} sum={sum} setval={setval} income={income} setincome={setincome}/>}/>
 
-    <Route path='/budget' element={<Budget/>} />
+    <Route path='/budget' element={<Budget sum={sum} income={income}/>} />
 
     <Route path='records' element={<Records income={income}/>}/>
 

@@ -7,13 +7,14 @@ const Included = (props) => {
     const[arrc,setarrc] = useState([]);
     const[searchval,setsearchval] = useState('');
     const[flag,setflag] = useState(false);
-    console.log(arrc.length);
-    console.log(flag);
+  
     props.setfinal(arrc);
     const handleinput = (e) =>{
             setsearchval(e.target.value);
             setflag(true);
     }
+
+    console.log(arrc);
     
   return (
     <div className='w-full flex flex-col justify-center gap-6 items-center text-white transition-all duration-10000 ease-in'>
@@ -31,10 +32,13 @@ const Included = (props) => {
      <div className='flex flex-col gap-8'>
        { 
         props.arr.map((x)=>{
+
+          const isduplicate = arrc.some((item)=> item.name === x.ind)
+       
             return(
 
                
-                <div onClick={()=>setarrc((prev)=>[...prev,{'name':x.ind,'img':x.img}])} className=' bg-[#1e1e1e] w-[480px] min-h-16 rounded-lg'>
+                <div onClick={()=>{isduplicate==false? setarrc((prev)=>[...prev,{'name':x.ind,'img':x.img}]): setarrc(prev => prev.filter(item => item.name !== x.ind))}} className=' bg-[#1e1e1e] w-[480px] min-h-16 rounded-lg'>
 
                 <div className='w-full h-[60px] flex'>
                    <div className='w-[600vh] h-[60px] flex gap-3 justify-center items-center'>
@@ -48,7 +52,7 @@ const Included = (props) => {
                    
                   <div className='w-full h-[100%] flex justify-center items-center'>
                     <div className='w-full h-5 rounded-full' onClick={()=>setval(!val)}>
-                 {val==true?
+                 {arrc.some((item)=>item.name==x.ind)?
 
                   <div className='w-4 h-4 rounded-full border-2 border-white'> <img className='w-3 h-3' src="https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620784_ycBC9Ii1Sc4e86V78Hv5ByRRI1IaCuF1.jpg" alt="" srcset="" /></div>
                   :

@@ -4,14 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import Goaldetails from './Goaldetails';
 import Addbgtpage from './Addbgtpage';
+import { CircularProgressbar } from 'react-circular-progressbar';
 
 
 
-const Budget = () => {
+const Budget = (props) => {
      
+  let fsum = localStorage.getItem('text');
+  console.log(fsum);
 
  
-   
+   const[dummy,setdummy]=useState(false);
   const[flag,setflag] = useState(false);
   const[rinks,setrinks] = useState(false);
   const[goal,setgoal] = useState(false);
@@ -22,6 +25,7 @@ const Budget = () => {
   const[savedamount,setsavedamount] = useState(0);
   const[namearr,setnamearr]=useState([])
   const[details,setdetails] = useState(0);
+  const[budgetlimit,setbudgetlimit] = useState();
   
     const navigate = useNavigate();
 
@@ -32,6 +36,8 @@ const Budget = () => {
 
     let x=0;
      x=(mis*100)/input;
+
+     console.log(budgetlimit);
 
      const handlebudget=()=>{
            setflag(true);
@@ -77,10 +83,54 @@ const goHome = () => {
 const handledetailpage = () =>{
           setdetails(1);
 }
+
+const d=new Date();
+let years=d.getFullYear();
+
+console.log(props.sum);
+
+function Mummy(){
+  return(
+    <>
+    <div className='flex justify-between'>
+  <div className='p-3'>
+      <div className='text-white text-lg font-bold'>{years}</div>
+    <div className='text-white'>{"Budget:"+ "$"+budgetlimit}</div>
+
+    <div>
+      <div className='text-white'>Total Spent</div>
+      <p className='text-white'>${fsum}</p>
+    </div>
+  
+    <div className='text-white'>Available Budget</div>
+    <div className='text-white'>{budgetlimit-fsum}</div>
+    </div>
+
+      
+    <div className='w-24'>
+      
+    <CircularProgressbar strokeWidth={10} value={(fsum*100)/budgetlimit} text={((fsum*100)/budgetlimit).toFixed(1)+"%"}/>
+      
+      
+      </div>
+    </div>
+    </>
+  )
+}
+
+
   return (
+
+
     <>
 
-{ details==1? 
+
+  
+
+{
+
+
+details==1? 
 <div>
 
 <Goaldetails  savedamount={savedamount} targetamount={targetamount} setdetails={setdetails} percentval={percentval}/>
@@ -88,7 +138,7 @@ const handledetailpage = () =>{
 : details ==2?
 
 <div>
-  <Addbgtpage setdetails={setdetails}/>
+  <Addbgtpage setdummy={setdummy} setbudgetlimit={setbudgetlimit} setdetails={setdetails}/>
 </div>
 :
 <div>
@@ -112,13 +162,13 @@ const handledetailpage = () =>{
 
       <div className='w-full flex flex-col gap-10 justify-center items-center'>
       
-
+    {dummy?<div className='w-[50%] h-40 bg-[#2a2a2a]'><Mummy/></div>:    
       <div className='w-[50%] h-40 bg-[#2a2a2a]'>
       
      <div className='flex p-2'>
       <div className='text-lg text-white'>
 
-        <div className='text-white text-3xl font-bold'>No Budget For This Month ?</div>
+        <div className='text-white text-3xl font-bold' onClick={()=>setdummy(true)}>No Budget For This Month ?</div>
 
         <div className='flex gap-5 h-14'>
           <div>
@@ -148,6 +198,7 @@ const handledetailpage = () =>{
       </div>
 
       </div>
+}
         
 
           <div className='w-[50%] min-h-40 bg-[#2a2a2a] p-4'>

@@ -9,14 +9,16 @@ import Included from './Included';
 const Addbgtpage = (props) => {
 
     const[year,setyear] = useState(false);
-    console.log(year);
+  
     const[final,setfinal] =useState([]);
 
-    console.log(final);
+    const[budgetval,setbudgetval]=useState()
+
+   
     
 const[isvisible,setisvisible] = useState(false);
 
-console.log(isvisible);
+
 
 
     const handleyearly = () =>{
@@ -61,6 +63,11 @@ const arr = [
 
 
 let years = d.getFullYear();
+
+const handlebudgets=()=> {
+     props.setbudgetlimit(budgetval);
+     props.setdummy(true);
+}
 
 
   return (
@@ -113,7 +120,7 @@ let years = d.getFullYear();
                 <div className='flex pl-4'>
                 <input type="image" className='w-10 bg-[#1e1e1e] border-[1px] border-r-0 p-1 border-gray-500 rounded-l-md' src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRmZhVrcr8agqmmRkNKsqb0cun13hsQGgKYg&s"} />
                 <div className='mt-2 bg-[#1e1e1e] h-6 border-l-[1px] border-gray-500'></div>
-                <input type="number" className='w-[300px] bg-[#1e1e1e] border-[1px] p-2 border-l-0 border-gray-500 rounded-r-md' placeholder='Enter your total budget limit' />
+                <input onChange={(e)=>setbudgetval(e.target.value)} type="number" className='w-[300px] bg-[#1e1e1e] border-[1px] p-2 border-l-0 border-gray-500 rounded-r-md' placeholder='Enter your total budget limit' />
                 
                 </div>
                 
@@ -189,6 +196,8 @@ let years = d.getFullYear();
 
                 
               </div>
+
+              <div onClick={handlebudgets} className='w-full flex justify-center items-center mt-5'><button className='w-40 rounded-md p-2 bg-white text-black'>Save</button></div>
     </div>
   )
 }
