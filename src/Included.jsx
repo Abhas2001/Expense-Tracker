@@ -14,7 +14,7 @@ const Included = (props) => {
             setsearchval(e.target.value);
             setflag(true);
     }
-    console.log(val);
+    
   return (
     <div className='w-full flex flex-col justify-center gap-6 items-center text-white transition-all duration-10000 ease-in'>
    
