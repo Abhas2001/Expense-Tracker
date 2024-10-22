@@ -14,6 +14,7 @@ const Included = (props) => {
             setsearchval(e.target.value);
             setflag(true);
     }
+    console.log(val);
   return (
     <div className='w-full flex flex-col justify-center gap-6 items-center text-white transition-all duration-10000 ease-in'>
    
@@ -46,8 +47,8 @@ const Included = (props) => {
                    </div>
                    
                   <div className='w-full h-[100%] flex justify-center items-center'>
-                    <div className='w-full h-5 rounded-full' onClick={()=>setval(true)}>
-                 {arrc.length>0&&arrc.some((element)=>{return element.name===x.ind})?
+                    <div className='w-full h-5 rounded-full' onClick={()=>setval(!val)}>
+                 {val==true?
 
                   <div className='w-4 h-4 rounded-full border-2 border-white'> <img className='w-3 h-3' src="https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620784_ycBC9Ii1Sc4e86V78Hv5ByRRI1IaCuF1.jpg" alt="" srcset="" /></div>
                   :
