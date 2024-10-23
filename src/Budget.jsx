@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import Goaldetails from './Goaldetails';
 import Addbgtpage from './Addbgtpage';
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 
 
 
@@ -86,30 +86,39 @@ const handledetailpage = () =>{
 
 const d=new Date();
 let years=d.getFullYear();
+const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+
+let names = month[d.getMonth()];
 
 console.log(props.sum);
+
+let color = "red"
 
 function Mummy(){
   return(
     <>
     <div className='flex justify-between'>
-  <div className='p-3'>
-      <div className='text-white text-lg font-bold'>{years}</div>
-    <div className='text-white'>{"Budget:"+ "$"+budgetlimit}</div>
-
+  <div className='p-3 flex flex-col gap-2'>
     <div>
-      <div className='text-white'>Total Spent</div>
-      <p className='text-white'>${fsum}</p>
+      <div className='text-white text-xl font-bold'>{names+","+ " " +years}</div>
+    <div className='text-gray-400'>{"Budget:"+ "$"+budgetlimit}</div>
     </div>
-  
-    <div className='text-white'>Available Budget</div>
-    <div className='text-white'>{budgetlimit-fsum}</div>
+    <div>
+      <div className='text-gray-400'>Total Spent</div>
+      <p className='text-white font-semibold'>${fsum}</p>
+    </div>
+     
+     <div>
+    <div className='text-gray-400'>Available Budget</div>
+    <div className='text-red-500 font-semibold '>{budgetlimit-fsum}</div>
+    </div>
     </div>
 
       
-    <div className='w-24'>
+    <div className='w-24 flex justify-center items-center relative right-5'>
       
-    <CircularProgressbar strokeWidth={10} value={(fsum*100)/budgetlimit} text={((fsum*100)/budgetlimit).toFixed(1)+"%"}/>
+    <CircularProgressbar styles={buildStyles({pathColor:color,textColor:"white"})} strokeWidth={10}  value={(fsum*100)/budgetlimit} text={((fsum*100)/budgetlimit).toFixed(1)+"%" }/>
       
       
       </div>
@@ -162,7 +171,7 @@ details==1?
 
       <div className='w-full flex flex-col gap-10 justify-center items-center'>
       
-    {dummy?<div className='w-[50%] h-40 bg-[#2a2a2a]'><Mummy/></div>:    
+    {dummy?<div className='w-[50%] h-52 bg-[#2a2a2a]'><Mummy/></div>:    
       <div className='w-[50%] h-40 bg-[#2a2a2a]'>
       
      <div className='flex p-2'>
