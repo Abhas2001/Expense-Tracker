@@ -30,7 +30,7 @@ const ReacentTransaction = (props) => {
   return (
     <div className='w-full flex justify-center items-center'>
       
-         <div className='w-[60%] h-[20rem] rounded-md bg-[#1e1e1e] '>
+         <div className='w-[60%] h-[20rem] rounded-md bg-[#1e1e1e] max-md:w-[93%] '>
           <div className='w-full flex justify-between text-white p-3 text-lg font-semibold'><p>Recent transactions</p> <button onClick={handletransaction}>See all</button></div>
     
 

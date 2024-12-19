@@ -53,14 +53,14 @@ localStorage.setItem('final',(sum+ JSON.parse(localStorage.getItem('item'))));
     <>
     <div className='min-h-32'>
     <div className='fixed top-0 w-full min-h-20 bg-[#1e1e1e] shadow-custom-white'>
-      <h1 className="text-2xl font-bold  text-white">
+      <h1 className="text-2xl max-md:text-xl font-bold  text-white">
        Personal Expense
     </h1>
-    <div className=' flex justify-center items-center gap-20'>
-      <button className={`text-white text-xl font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==0?'border-b-2':null}`} onClick={handleHome}>Home</button>
-      <button className={`text-white text-xl font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==1?'border-b-2':null} `} onClick={handlebudget}>Budgets</button>
-      <button className={`text-white text-xl font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==1?'border-b-2':null}`} onClick={handleHome}>Analysis</button>
-      <button className={`text-white text-xl font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==1?'border-b-2':null} `} onClick={handlebudget}>Bank</button>
+    <div className=' flex justify-center items-center gap-20 max-md:gap-5'>
+      <button className={`text-white text-xl max-md:text-sm font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==0?'border-b-2':null}`} onClick={handleHome}>Home</button>
+      <button className={`text-white text-xl max-md:text-sm   font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==1?'border-b-2':null} `} onClick={handlebudget}>Budgets</button>
+      <button className={`text-white text-xl max-md:text-sm  font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==1?'border-b-2':null}`} onClick={handleHome}>Analysis</button>
+      <button className={`text-white text-xl max-md:text-sm  font-bold cursor-pointer  hover:-translate-y-1 hover:scale-110  duration-300 ${valss==1?'border-b-2':null} `} onClick={handlebudget}>Bank</button>
     
     </div>
     </div>
